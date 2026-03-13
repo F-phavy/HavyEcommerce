@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(ew+a-b-u%@h7#ugbt1sg)g%)fjdni@8if-)wl66@=q2ocnfgh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['havyecommerce.onrender.com', '127.0.0.1', 'localhost', '*']
 
