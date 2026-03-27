@@ -36,12 +36,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
+    'cloudinary_storage',  # Add this here
     'django.contrib.staticfiles',
+    'cloudinary',          # Add this here
+    
     'products',
     'cart',
     'orders',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -120,21 +123,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# This tells Django to look in the root "HavyEcommerce" folder for your static files
+STATICFILES_DIRS = [BASE_DIR.parent / "static"]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Cloudinary and Media Files
+MEDIA_URL = '/media/'  # Added leading slash for reliability
+MEDIA_ROOT = BASE_DIR / 'media' 
+
+# Cloudinary Credentials
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dw3jnznvt',
+    'API_KEY': '359241818261273',
+    'API_SECRET': 'GVcIO2M0VHwCYnwgvzstwkXFLX8'
+}
+
+# The modern way (Django 4.2+) to handle storages
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
-MEDIA_URL = 'media/'
-STATIC_ROOT = BASE_DIR/'staticfiles'
-MEDIA_ROOT  = BASE_DIR/'mediafiles'
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# You can remove the old DEFAULT_FILE_STORAGE line now as it's handled by STORAGES
