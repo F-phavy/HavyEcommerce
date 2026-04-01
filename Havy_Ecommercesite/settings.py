@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-(ew+a-b-u%@h7#ugbt1sg)g%)fjdni@8if-)wl66@=q2ocnfgh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['havyecommerce.onrender.com', '127.0.0.1', 'localhost', '*']
-
+ALLOWED_HOSTS = ['havyecommerce-1.onrender.com', 'havyecommerce.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -58,20 +57,38 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Havy_Ecommercesite.urls'
 
+# Updated TEMPLATES to be extra safe with the new path
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        # Change this line specifically:
+        'DIRS': [BASE_DIR / 'Havy_Ecommercesite' / 'templates'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cloudinary_storage.processors.pk_only',
             ],
         },
     },
 ]
+
+# The Final Storage Setup
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# The "Build Fix" you already have (Keep this!)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 WSGI_APPLICATION = 'Havy_Ecommercesite.wsgi.application'
 
