@@ -61,8 +61,10 @@ ROOT_URLCONF = 'Havy_Ecommercesite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # Change this line specifically:
-        'DIRS': [BASE_DIR / 'Havy_Ecommercesite' / 'templates'], 
+        'DIRS': [
+            BASE_DIR / 'templates',
+            BASE_DIR / 'Havy_Ecommercesite' / 'templates',
+        ], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,12 +72,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cloudinary_storage.processors.pk_only',
             ],
         },
     },
 ]
-
 # The Final Storage Setup
 STORAGES = {
     "default": {
