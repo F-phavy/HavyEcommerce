@@ -58,13 +58,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'Havy_Ecommercesite.urls'
 
 # Updated TEMPLATES to be extra safe with the new path
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            # This specifically tells Django to look inside that inner folder
             BASE_DIR / 'Havy_Ecommercesite' / 'templates',
-        ], 
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
