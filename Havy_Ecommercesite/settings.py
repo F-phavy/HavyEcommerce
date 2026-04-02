@@ -63,10 +63,7 @@ import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            # This specifically tells Django to look inside that inner folder
-            BASE_DIR / 'Havy_Ecommercesite' / 'templates',
-        ],
+        'DIRS': [BASE_DIR / 'templates'], # This is all you need now!
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
