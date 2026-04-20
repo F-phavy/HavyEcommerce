@@ -1,21 +1,90 @@
-{% extends "base.html" %}
-{% block title %}Order Create{%endblock%}
-
-
+{% extends 'base.html' %}
+{% block title %}Checkout — HAVY{% endblock %}
 
 {% block content %}
-<div class="shadow-md p-4">
-    <h2 class="text-blue-600 text-2xl font-semi-bold mb-4">Checkout</h2>
-    <form method="post">
-        {%csrf_token%}
-        {{form.as_p}}
-        <button class="bg-blue-600 text-white px-4 py-2 rounded mt-0.5" type="submit">Place Order</button>
-    </form>
+<div class="min-h-screen bg-[#FAF9F6] py-20 px-6">
+    <div class="max-w-[800px] mx-auto">
+        
+        <div class="mb-12 reveal-on-scroll">
+            <h2 class="text-5xl font-black uppercase tracking-tighter text-black mb-2">Checkout</h2>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-[1px] bg-black"></div>
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">Secure Global Archive Shipping</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-50">
+            <form method="post" class="havy-form">
+                {% csrf_token %}
+                
+                <div class="space-y-6">
+                    {{ form.as_p }}
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 max-w-[200px]">
+                        By placing this order, you agree to the Havy Standard Terms.
+                    </p>
+                    
+                    <button class="relative group p-[1px] rounded-full bg-gradient-to-r from-[#7928ca] to-[#ff0080] transition-transform hover:scale-105" type="submit">
+                        <div class="bg-black rounded-full px-12 py-5 transition-colors group-hover:bg-transparent">
+                            <span class="text-white font-black uppercase tracking-[0.2em] text-xs">Complete Order</span>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-8 flex justify-center items-center gap-4 text-gray-300">
+            <i class="bi bi-shield-lock text-xl"></i>
+            <span class="text-[9px] font-black uppercase tracking-[0.3em]">Encrypted Standard Checkout</span>
+        </div>
+    </div>
 </div>
 
 <style>
-    form p {
-        margin-bottom: 1rem;
+    /* Styling the Django generated form without touching forms.py */
+    .havy-form p {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .havy-form label {
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #000;
+    }
+
+    .havy-form input, .havy-form textarea, .havy-form select {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: #F9F9F9;
+        border: 1px solid #EEEEEE;
+        border-radius: 1rem;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .havy-form input:focus {
+        outline: none;
+        background: white;
+        border-color: #000;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    }
+
+    /* Error handling */
+    .errorlist {
+        color: #ff0080;
+        font-size: 10px;
+        font-weight: bold;
+        list-style: none;
+        padding: 0;
+        margin-top: 5px;
+        text-transform: uppercase;
     }
 </style>
 {% endblock %}

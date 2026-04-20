@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -99,6 +100,10 @@ import dj_database_url
 import os
 
 # Use the Render DATABASE_URL if it exists, otherwise use SQLite
+# Havy_Ecommercesite/settings.py
+
+# settings.py
+
 DATABASES = {
     'default': dj_database_url.config(
         default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
