@@ -13,6 +13,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
         }
@@ -57,79 +64,77 @@
     </main>
 
 
-    <a href="https://www.instagram.com/favourr_p?igsh=NHQwNjJ1emo0dHZk" target="_blank"
-        class="fixed bottom-10 right-10 z-50">
+    <a href="https://wa.me/2349055191734" target="_blank" class="fixed bottom-10 right-10 z-50">
 
         <div class="relative group">
             <div
-                class="absolute -inset-2 bg-gradient-to-tr from-orange-500 to-rose-500 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-500">
+                class="absolute -inset-2 bg-gradient-to-tr from-green-500 to-green-500 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-500">
             </div>
 
             <div
                 class="relative flex items-center gap-4 bg-white/80 backdrop-blur-xl border border-white p-2 pr-6 rounded-full shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                 <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white shadow-lg">
-                    <i class="bi bi-instagram text-xl"></i>
+                    <i class="bi bi-whatsapp text-xl"></i>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-[9px] font-black uppercase tracking-widest text-gray-400 leading-none">Drop a
                         DM</span>
-                    <span class="text-[12px] font-black uppercase tracking-tight text-black">@favourr_p</span>
+                    <span class="text-[12px] font-black uppercase tracking-tight text-black">@favour</span>
                 </div>
             </div>
         </div>
     </a>
 
 
-    <footer class="mt-12 px-6 pb-8">
-        <div
-            class="max-w-[1200px] mx-auto bg-black rounded-[2rem] p-6 md:p-10 shadow-2xl border border-white/5 relative overflow-hidden text-white">
+    <footer class="mt-8 px-4 md:px-6 pb-6">
+    <div class="max-w-[1200px] mx-auto bg-black rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 shadow-2xl border border-white/5 relative overflow-hidden text-white">
 
-            <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-center md:text-left">
-                    <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
-                        <h2 class="text-3xl font-black uppercase tracking-tighter leading-none">
-                            HAVY
-                        </h2>
-                        <div class="w-1.5 h-1.5 rounded-full bg-gradient-to-tr from-[#7928ca] to-[#ff0080]"></div>
-                    </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-10 text-center md:text-left">
 
-                    <div class="flex gap-6 text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">
-                        <a href="/" class="hover:text-white transition-colors">Shop</a>
-                        <a href="{% url 'cart:cart_detail' %}" class="relative inline-flex items-center p-2 group">
-                            <i class="bi bi-bag text-white text-xl transition-transform group-hover:scale-110"></i>
-
-                            {% if cart|length > 0 %}
-                            <span
-                                class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#ff0080] text-[9px] font-black text-white ring-2 ring-black">
-                                {{ cart|length }}
-                            </span>
-                            {% endif %}
-                        </a>
-                    </div>
+            <div class="flex flex-col items-center md:items-start gap-3">
+                <div class="flex items-center gap-2">
+                    <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                        HAVY
+                    </h2>
+                    <div class="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-orange-600"></div>
                 </div>
 
-                <a href="https://www.instagram.com/favourr_p?igsh=NHQwNjJ1emo0dHZk" target="_blank"
-                    class="relative p-[1px] group rounded-full bg-gradient-to-r from-[#7928ca] to-[#ff0080] transition-transform hover:scale-105">
-                    <div class="bg-black rounded-full px-8 py-3 transition-colors group-hover:bg-transparent">
-                        <span class="text-white font-black uppercase tracking-widest text-[10px]">DM @favourr_p</span>
-                    </div>
-                </a>
-
-                <div class="flex items-center gap-6 border-l border-white/10 pl-8">
-                    <a href="https://www.linkedin.com/in/favour-samuel-6790833a3" target="_blank"
-                        class="text-gray-500 hover:text-[#7928ca] transition-colors text-xl">
-                        <i class="bi bi-linkedin"></i>
+                <div class="flex items-center gap-6">
+                    <a href="/" class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 hover:text-white transition-colors">Shop</a>
+                    <a href="{% url 'cart:cart_detail' %}" class="relative inline-flex items-center group">
+                        <i class="bi bi-bag text-white text-lg md:text-xl"></i>
+                        {% if cart|length > 0 %}
+                        <span class="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-orange-600 text-[8px] font-black text-white ring-1 ring-black">
+                            {{ cart|length }}
+                        </span>
+                        {% endif %}
                     </a>
                 </div>
             </div>
 
-            <div class="mt-8 pt-6 border-t border-white/5 flex justify-center items-center">
-                <p class="text-[8px] font-black uppercase tracking-[0.5em] text-gray-700">
-                    © 2026 HAVY • VERIFIED STANDARD
-                </p>
+            <div class="flex flex-col items-center md:items-end gap-3 w-full md:w-auto">
+                <span class="text-[7px] md:text-[8px] font-black uppercase tracking-[0.3em] text-gray-600">Socials</span>
+                <div class="flex items-center gap-6 md:gap-6">
+                    <a href="https://wa.me/2349055191734" target="_blank" class="text-xl md:text-2xl text-[#25D366] transition-transform active:scale-90">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/favourr_p?igsh=NHQwNjJ1emo0dHZk" target="_blank" class="text-xl md:text-2xl text-[#E1306C] transition-transform active:scale-90">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/favour-samuel-6790833a3" target="_blank" class="text-xl md:text-2xl text-[#0077B5] transition-transform active:scale-90">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </footer>
+
+        <div class="mt-6 pt-4 border-t border-white/5 flex justify-center items-center text-center">
+            <p class="text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em] text-gray-700">
+                © 2026 HAVY • VERIFIED
+            </p>
+        </div>
+    </div>
+</footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {

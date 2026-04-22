@@ -1,21 +1,55 @@
 {% extends "base.html" %}
-{% block title %}Order Confirmation{%endblock%}
-
+{% load static %}
+{% block title %} Order Confirmed — HAVY {% endblock %}
 
 {% block content %}
+<section class="relative min-h-screen flex items-center justify-center px-4 md:px-10 py-12 md:py-20 bg-[#F5F5F5]">
+    <div class="relative z-10 max-w-[650px] w-full bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100">
+        
+        <div class="p-10 md:p-14 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-full mb-6 text-white shadow-xl">
+                <i class="bi bi-check2 text-3xl"></i>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-black leading-none mb-4">
+                Thank You<span class="text-orange-600">.</span>
+            </h2>
+            <p class="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-gray-400">
+                Order Verified #{{ order.id }}
+            </p>
+        </div>
 
-<h2>Your Order Has Been Placed! Below are the details</h2>
+        <div class="px-8 md:px-14 pb-14">
+            <div class="space-y-6 border-t border-b border-gray-100 py-8 mb-8">
+                {% for item in order.items.all %}
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xs md:text-sm font-black uppercase tracking-widest text-black">
+                            {{ item.product.name }}
+                        </h3>
+                        <span class="text-[10px] font-bold text-gray-400 uppercase">Qty: {{ item.quantity }}</span>
+                    </div>
+                    <span class="font-mono text-sm font-bold text-black">${{ item.price }}</span>
+                </div>
+                {% endfor %}
+            </div>
 
-<h3>ORDER ID: #{{order.id}}</h3>
-<ul>
-    {% for item in order.items.all %}
-    <li>
-        <strong>{{item.quantity}} * {{item.product.name}}</strong>
-        <br>
-        <span>{{item.price}}</span>
-    </li>
-    {%endfor%}
-</ul>
+            <div class="flex justify-between items-end mb-10">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 leading-none">Total Investment</span>
+                <span class="text-3xl md:text-4xl font-black tracking-tighter text-black leading-none">
+                    ${{ order.get_total_cost }}
+                </span>
+            </div>
 
-<p>Total" ${{order.get_total_cost}}</p>
+            <div class="flex flex-col gap-4">
+                <a href="{% url 'products:product_list' %}" 
+                   class="w-full bg-black text-white text-center py-5 rounded-full font-black uppercase tracking-widest text-[10px] transition-all hover:bg-orange-600 active:scale-95 shadow-lg">
+                    Return to Collection
+                </a>
+                <p class="text-center text-[8px] font-black uppercase tracking-[0.5em] text-gray-300">
+                    Havy Boutique Standard Archive
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

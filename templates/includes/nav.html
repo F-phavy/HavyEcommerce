@@ -1,10 +1,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-<nav class="sticky top-0 z-50 bg-[#121212] border-b border-white/10 py-5">
-    <div class="container mx-auto px-6 flex justify-between items-center">
+<nav class="sticky top-0 z-50 bg-[#121212] border-b border-white/10 py-4 md:py-5">
+    <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
 
         <a href="{% url 'products:home' %}"
-            class="text-3xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity"
+            class="text-xl md:text-3xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity"
             style="font-family: 'Space Grotesk', sans-serif;">
             HAVY<span class="text-orange-600">.</span>BOUTIQUE
         </a>
@@ -13,9 +13,9 @@
             <a href="{% url 'products:product_list' %}" class="hover:text-white transition-colors">Collection</a>
         </div>
 
-        <div class="flex items-center space-x-6 text-white">
+        <div class="flex items-center space-x-4 md:space-x-6 text-white">
             <a href="{% url 'cart:cart_detail' %}" class="relative group p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                     class="bi bi-bag transition-transform group-hover:scale-110" viewBox="0 0 16 16">
                     <path
                         d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
@@ -23,7 +23,7 @@
 
                 {% if cart and cart.items.all|length > 0 %}
                 <span
-                    class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-600 text-white text-[10px] font-bold ring-2 ring-[#121212] shadow-md">
+                    class="absolute -top-1 -right-1 flex h-4 w-4 md:h-5 md:w-5 items-center justify-center rounded-full bg-orange-600 text-white text-[8px] md:text-[10px] font-bold ring-2 ring-[#121212] shadow-md">
                     {{ cart.items.all|length }}
                 </span>
                 {% endif %}
